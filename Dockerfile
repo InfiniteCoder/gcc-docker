@@ -24,6 +24,8 @@ RUN apk del g++
 # Install stripped versions
 RUN make install-strip
 
+# Remove other packages, so that no files are unitentionally copied over
+RUN apk del g++ musl musl-dev bash gawk gzip make tar gmp mpfr3 mpfr-dev mpc1 mpc1-dev isl isl-dev linux-headers binutils
 
 # Final Stage
 FROM alpine:3.7 as final
