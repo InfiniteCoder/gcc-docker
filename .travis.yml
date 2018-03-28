@@ -1,0 +1,12 @@
+sudo: required
+
+services: 
+  - docker
+  
+matrix:
+  include:
+    - language: c
+    - language: c++
+    
+install:
+  - docker build --name gcc-test .
