@@ -8,10 +8,13 @@ This repo contains the Dockerfile for gcc builds using Alpine Linux as base imag
 2. Pull the image
 
        docker pull infinitecoder/gcc:<tag>
-   where \<tag> is either devel ( for the latest image), or version number of gcc (eg: 7.3)
+   where \<tag> is version number of gcc (eg: 7.3)
 3. To use the image interactively use,
 
        docker run -it -v /home/mydir/:/home/code infinitecoder/gcc:<tag>
       
 ## License
 This project is licensed under the MIT license. Refer LICENSE for more information.
+
+## Credits
+Thanks to [Jonathan Wakely](https://github.com/jwakely) for his help to get the gcc build working.
