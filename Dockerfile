@@ -7,14 +7,14 @@ RUN apk add g++ musl musl-dev bash gawk gzip make tar gmp mpfr3 mpfr-dev mpc1 mp
 RUN bash
 
 # Download sources and extract
-RUN wget ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz && tar -xvzf gcc-7.3.0.tar.gz
+RUN wget http://mirrors.concertpass.com/gcc/releases/gcc-8.1.0/gcc-8.1.0.tar.gz && tar -xvzf gcc-8.1.0.tar.gz
 
 # Make directory for build
 RUN mkdir build
 WORKDIR build
 
 # Configure
-RUN /gcc-7.3.0/configure --enable-languages=c,c++ --disable-multilib --build=x86_64-alpine-linux-musl --host=x86_64-alpine-linux-musl --target=x86_64-alpine-linux-musl --disable-libsanitizer --disable-libatomic --disable-libitm
+RUN /gcc-8.1.0/configure --enable-languages=c,c++ --disable-multilib --build=x86_64-alpine-linux-musl --host=x86_64-alpine-linux-musl --target=x86_64-alpine-linux-musl --disable-libsanitizer --disable-libatomic --disable-libitm
 
 # Build
 RUN make -j$(($(nproc --all) * 2))  BOOT_CFLAGS='-O3 -g0' profiledbootstrap
